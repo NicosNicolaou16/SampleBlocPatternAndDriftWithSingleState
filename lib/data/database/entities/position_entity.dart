@@ -1,5 +1,16 @@
 import 'package:drift/drift.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/database.dart';
+import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/ships_entity.dart';
+
+class Position extends Table {
+  IntColumn get id => integer().autoIncrement()();
+
+  RealColumn get latitude => real().nullable()();
+
+  RealColumn get longitude => real().nullable()();
+
+  TextColumn get shipId => text().references(Ships, #id)();
+}
 
 class PositionEntity {
   double? latitude;
@@ -40,26 +51,9 @@ class PositionEntity {
 
   static Future<PositionEntity?> getPositionById(String shipId) async {
     AppDb appDb = AppDb.instance;
-    PositionTable? positionTable = await (appDb.select(appDb.position)
-          ..where((tbl) => tbl.shipId.equals(shipId)))
+    PositionEntity? positionEntity = await (appDb.select(appDb.position)
+      ..where((tbl) => tbl.shipId.equals(shipId)))
         .getSingleOrNull();
-    PositionEntity? positionEntity;
-    if (positionTable != null) {
-      positionEntity =
-          PositionEntity.positionTableConvertTPositionEntity(positionTable);
-    }
-    return positionEntity;
-  }
-
-  static PositionEntity? positionTableConvertTPositionEntity(
-      PositionTable? positionTable) {
-    PositionEntity? positionEntity;
-    if (positionTable != null) {
-      positionEntity = PositionEntity();
-      positionEntity.latitude = positionTable.latitude;
-      positionEntity.longitude = positionTable.longitude;
-      positionEntity.shipId = positionTable.shipId;
-    }
     return positionEntity;
   }
 }

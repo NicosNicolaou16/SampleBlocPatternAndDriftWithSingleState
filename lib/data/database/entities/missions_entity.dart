@@ -1,5 +1,16 @@
 import 'package:drift/drift.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/database.dart';
+import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/ships_entity.dart';
+
+class Missions extends Table {
+  IntColumn get id => integer().autoIncrement()();
+
+  TextColumn get name => text().nullable()();
+
+  IntColumn get flight => integer().nullable()();
+
+  TextColumn get shipId => text().references(Ships, #id)();
+}
 
 class MissionsEntity {
   String? name;
@@ -56,31 +67,9 @@ class MissionsEntity {
   static Future<List<MissionsEntity>> getAllMissionsByShipId(
       String shipId) async {
     AppDb appDb = AppDb.instance;
-    List<MissionsTable>? missionsTableList = await (appDb.select(appDb.missions)
-          ..where((tbl) => tbl.shipId.equals(shipId)))
+    List<MissionsEntity>? missionsEntityList = await (appDb.select(appDb.missions)
+      ..where((tbl) => tbl.shipId.equals(shipId)))
         .get();
-    List<MissionsEntity>? missionsEntityList = [];
-    await Future.forEach(missionsTableList, (MissionsTable? missionsTable) {
-      if (missionsTable != null) {
-        MissionsEntity? missionsEntity =
-            MissionsEntity.missionsTableConvertToMissionsEntity(missionsTable);
-        if (missionsEntity != null) {
-          missionsEntityList.add(missionsEntity);
-        }
-      }
-    });
     return missionsEntityList;
-  }
-
-  static MissionsEntity? missionsTableConvertToMissionsEntity(
-      MissionsTable? missionsTable) {
-    MissionsEntity? missionsEntity;
-    if (missionsTable != null) {
-      missionsEntity = MissionsEntity();
-      missionsEntity.name = missionsTable.name;
-      missionsEntity.flight = missionsTable.flight;
-      missionsEntity.shipId = missionsTable.shipId;
-    }
-    return missionsEntity;
   }
 }

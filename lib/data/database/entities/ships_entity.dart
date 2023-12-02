@@ -3,6 +3,45 @@ import 'package:sampleblocpatternanddriftwithsinglestate/data/database/database.
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/missions_entity.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/position_entity.dart';
 
+class Ships extends Table {
+  TextColumn get id => text()();
+
+  TextColumn get shipName => text().nullable()();
+
+  TextColumn get shipType => text().nullable()();
+
+  TextColumn get shipModel => text().nullable()();
+
+  BoolColumn get active => boolean().nullable()();
+
+  IntColumn get imo => integer().nullable()();
+
+  IntColumn get abs => integer().nullable()();
+
+  IntColumn get clazz => integer().nullable()();
+
+  IntColumn get weightLbs => integer().nullable()();
+
+  IntColumn get yearBuild => integer().nullable()();
+
+  TextColumn get homePort => text().nullable()();
+
+  TextColumn get status => text().nullable()();
+
+  TextColumn get courseDeg => text().nullable()();
+
+  IntColumn get successfulLandings => integer().nullable()();
+
+  IntColumn get attemptedLandings => integer().nullable()();
+
+  TextColumn get url => text().nullable()();
+
+  TextColumn get image => text().nullable()();
+
+  @override
+  Set<Column>? get primaryKey => {id};
+}
+
 class ShipsEntity {
   String? id;
   String? shipName;
@@ -86,7 +125,7 @@ class ShipsEntity {
       shipName: Value(shipName ?? ""),
       shipType: Value(shipType ?? ""),
       shipModel: Value(shipModel ?? ""),
-      active: Value(active == true ? 1 : 0),
+      active: Value(active ?? false),
       imo: Value(imo ?? -1),
       abs: Value(abs ?? -1),
       clazz: Value(clazz ?? -1),
@@ -126,98 +165,24 @@ class ShipsEntity {
 
   static Future<List<ShipsEntity>> getAllShips() async {
     AppDb appDb = AppDb.instance;
-    List<ShipsTable>? shipsTableList = await appDb.select(appDb.ships).get();
-    List<ShipsEntity>? shipsEntityList = [];
-    await Future.forEach(shipsTableList, (ShipsTable? shipTable) async {
-      if (shipTable != null) {
-        PositionEntity? positionEntity =
-            await PositionEntity.getPositionById(shipTable.id);
-        List<MissionsEntity>? missionEntityList =
-            await MissionsEntity.getAllMissionsByShipId(shipTable.id);
-        ShipsEntity? shipsEntity = ShipsEntity.shipsTableConvertToShipsEntity(
-          shipTable,
-          positionEntity,
-          missionEntityList,
-        );
-        if (shipsEntity != null) {
-          shipsEntityList.add(shipsEntity);
-        }
-      }
-    });
+    List<Ship>? shipsList = await appDb.select(appDb.ships).get();
+    //List<ShipsEntity>? shipsEntityList = await appDb.select(appDb.ships).get();
     return shipsEntityList;
   }
 
   static Future<ShipsEntity?> getShipById(String shipId) async {
     AppDb appDb = AppDb.instance;
-    ShipsTable? shipsTable = await (appDb.select(appDb.ships)
-          ..where((tbl) => tbl.id.equals(shipId)))
+    ShipsEntity? shipsEntity = await (appDb.select(appDb.ships)
+      ..where((tbl) => tbl.id.equals(shipId)))
         .getSingleOrNull();
-    ShipsEntity? shipsEntity;
-    if (shipsTable != null) {
-      PositionEntity? positionEntity =
-          await PositionEntity.getPositionById(shipsTable.id);
-      List<MissionsEntity>? missionEntityList =
-          await MissionsEntity.getAllMissionsByShipId(shipsTable.id);
-      shipsEntity = ShipsEntity.shipsTableConvertToShipsEntity(
-        shipsTable,
-        positionEntity,
-        missionEntityList,
-      );
-    }
     return shipsEntity;
   }
 
   static Future<List<ShipsEntity>> getShipsByName(String shipName) async {
     AppDb appDb = AppDb.instance;
-    List<ShipsTable>? shipsTableList = await (appDb.select(appDb.ships)
-          ..where((tbl) => tbl.shipName.like("%$shipName%")))
+    List<ShipsEntity>? shipsEntityList = await (appDb.select(appDb.ships)
+      ..where((tbl) => tbl.shipName.like("%$shipName%")))
         .get();
-    List<ShipsEntity>? shipsEntityList = [];
-    await Future.forEach(shipsTableList, (ShipsTable? shipTable) async {
-      if (shipTable != null) {
-        PositionEntity? positionEntity =
-            await PositionEntity.getPositionById(shipTable.id);
-        List<MissionsEntity>? missionEntityList =
-            await MissionsEntity.getAllMissionsByShipId(shipTable.id);
-        ShipsEntity? shipsEntity = ShipsEntity.shipsTableConvertToShipsEntity(
-          shipTable,
-          positionEntity,
-          missionEntityList,
-        );
-        if (shipsEntity != null) {
-          shipsEntityList.add(shipsEntity);
-        }
-      }
-    });
     return shipsEntityList;
-  }
-
-  static ShipsEntity? shipsTableConvertToShipsEntity(
-    ShipsTable? shipsTable,
-    PositionEntity? positionEntity,
-    List<MissionsEntity>? missionsEntityList,
-  ) {
-    ShipsEntity? shipsEntity;
-    if (shipsTable != null) {
-      shipsEntity = ShipsEntity();
-      shipsEntity.id = shipsTable.id;
-      shipsEntity.shipName = shipsTable.shipName;
-      shipsEntity.shipType = shipsTable.shipType;
-      shipsEntity.shipModel = shipsTable.shipModel;
-      shipsEntity.active = shipsTable.active == 1;
-      shipsEntity.imo = shipsTable.imo;
-      shipsEntity.abs = shipsTable.abs;
-      shipsEntity.clazz = shipsTable.clazz;
-      shipsEntity.weightLbs = shipsTable.weightLbs;
-      shipsEntity.homePort = shipsTable.homePort;
-      shipsEntity.status = shipsTable.status;
-      shipsEntity.successfulLandings = shipsTable.successfulLandings;
-      shipsEntity.attemptedLandings = shipsTable.attemptedLandings;
-      shipsEntity.url = shipsTable.url;
-      shipsEntity.image = shipsTable.image;
-      shipsEntity.positionEntity = positionEntity;
-      shipsEntity.missionsEntityList = missionsEntityList;
-    }
-    return shipsEntity;
   }
 }

@@ -3,122 +3,108 @@
 part of 'database.dart';
 
 // ignore_for_file: type=lint
-class Ships extends Table with TableInfo<Ships, ShipsTable> {
+class $ShipsTable extends Ships with TableInfo<$ShipsTable, Ship> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  Ships(this.attachedDatabase, [this._alias]);
+  $ShipsTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
-      type: DriftSqlType.string,
-      requiredDuringInsert: true,
-      $customConstraints: 'NOT NULL PRIMARY KEY');
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _shipNameMeta =
       const VerificationMeta('shipName');
+  @override
   late final GeneratedColumn<String> shipName = GeneratedColumn<String>(
       'ship_name', aliasedName, true,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _shipTypeMeta =
       const VerificationMeta('shipType');
+  @override
   late final GeneratedColumn<String> shipType = GeneratedColumn<String>(
       'ship_type', aliasedName, true,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _shipModelMeta =
       const VerificationMeta('shipModel');
+  @override
   late final GeneratedColumn<String> shipModel = GeneratedColumn<String>(
       'ship_model', aliasedName, true,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _activeMeta = const VerificationMeta('active');
-  late final GeneratedColumn<int> active = GeneratedColumn<int>(
+  @override
+  late final GeneratedColumn<bool> active = GeneratedColumn<bool>(
       'active', aliasedName, true,
-      type: DriftSqlType.int,
+      type: DriftSqlType.bool,
       requiredDuringInsert: false,
-      $customConstraints: '');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("active" IN (0, 1))'));
   static const VerificationMeta _imoMeta = const VerificationMeta('imo');
+  @override
   late final GeneratedColumn<int> imo = GeneratedColumn<int>(
       'imo', aliasedName, true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _absMeta = const VerificationMeta('abs');
+  @override
   late final GeneratedColumn<int> abs = GeneratedColumn<int>(
       'abs', aliasedName, true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _clazzMeta = const VerificationMeta('clazz');
+  @override
   late final GeneratedColumn<int> clazz = GeneratedColumn<int>(
       'clazz', aliasedName, true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _weightLbsMeta =
       const VerificationMeta('weightLbs');
+  @override
   late final GeneratedColumn<int> weightLbs = GeneratedColumn<int>(
       'weight_lbs', aliasedName, true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      $customConstraints: '');
-  static const VerificationMeta _yearBuiltMeta =
-      const VerificationMeta('yearBuilt');
-  late final GeneratedColumn<int> yearBuilt = GeneratedColumn<int>(
-      'year_built', aliasedName, true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _yearBuildMeta =
+      const VerificationMeta('yearBuild');
+  @override
+  late final GeneratedColumn<int> yearBuild = GeneratedColumn<int>(
+      'year_build', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _homePortMeta =
       const VerificationMeta('homePort');
+  @override
   late final GeneratedColumn<String> homePort = GeneratedColumn<String>(
       'home_port', aliasedName, true,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
   late final GeneratedColumn<String> status = GeneratedColumn<String>(
       'status', aliasedName, true,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _courseDegMeta =
       const VerificationMeta('courseDeg');
+  @override
   late final GeneratedColumn<String> courseDeg = GeneratedColumn<String>(
       'course_deg', aliasedName, true,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _successfulLandingsMeta =
       const VerificationMeta('successfulLandings');
+  @override
   late final GeneratedColumn<int> successfulLandings = GeneratedColumn<int>(
       'successful_landings', aliasedName, true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _attemptedLandingsMeta =
       const VerificationMeta('attemptedLandings');
+  @override
   late final GeneratedColumn<int> attemptedLandings = GeneratedColumn<int>(
       'attempted_landings', aliasedName, true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _urlMeta = const VerificationMeta('url');
+  @override
   late final GeneratedColumn<String> url = GeneratedColumn<String>(
       'url', aliasedName, true,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _imageMeta = const VerificationMeta('image');
+  @override
   late final GeneratedColumn<String> image = GeneratedColumn<String>(
       'image', aliasedName, true,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.string, requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns => [
         id,
@@ -130,7 +116,7 @@ class Ships extends Table with TableInfo<Ships, ShipsTable> {
         abs,
         clazz,
         weightLbs,
-        yearBuilt,
+        yearBuild,
         homePort,
         status,
         courseDeg,
@@ -145,7 +131,7 @@ class Ships extends Table with TableInfo<Ships, ShipsTable> {
   String get actualTableName => $name;
   static const String $name = 'ships';
   @override
-  VerificationContext validateIntegrity(Insertable<ShipsTable> instance,
+  VerificationContext validateIntegrity(Insertable<Ship> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -186,9 +172,9 @@ class Ships extends Table with TableInfo<Ships, ShipsTable> {
       context.handle(_weightLbsMeta,
           weightLbs.isAcceptableOrUnknown(data['weight_lbs']!, _weightLbsMeta));
     }
-    if (data.containsKey('year_built')) {
-      context.handle(_yearBuiltMeta,
-          yearBuilt.isAcceptableOrUnknown(data['year_built']!, _yearBuiltMeta));
+    if (data.containsKey('year_build')) {
+      context.handle(_yearBuildMeta,
+          yearBuild.isAcceptableOrUnknown(data['year_build']!, _yearBuildMeta));
     }
     if (data.containsKey('home_port')) {
       context.handle(_homePortMeta,
@@ -228,9 +214,9 @@ class Ships extends Table with TableInfo<Ships, ShipsTable> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  ShipsTable map(Map<String, dynamic> data, {String? tablePrefix}) {
+  Ship map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ShipsTable(
+    return Ship(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       shipName: attachedDatabase.typeMapping
@@ -240,7 +226,7 @@ class Ships extends Table with TableInfo<Ships, ShipsTable> {
       shipModel: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ship_model']),
       active: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}active']),
+          .read(DriftSqlType.bool, data['${effectivePrefix}active']),
       imo: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}imo']),
       abs: attachedDatabase.typeMapping
@@ -249,8 +235,8 @@ class Ships extends Table with TableInfo<Ships, ShipsTable> {
           .read(DriftSqlType.int, data['${effectivePrefix}clazz']),
       weightLbs: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}weight_lbs']),
-      yearBuilt: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}year_built']),
+      yearBuild: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}year_build']),
       homePort: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}home_port']),
       status: attachedDatabase.typeMapping
@@ -269,25 +255,22 @@ class Ships extends Table with TableInfo<Ships, ShipsTable> {
   }
 
   @override
-  Ships createAlias(String alias) {
-    return Ships(attachedDatabase, alias);
+  $ShipsTable createAlias(String alias) {
+    return $ShipsTable(attachedDatabase, alias);
   }
-
-  @override
-  bool get dontWriteConstraints => true;
 }
 
-class ShipsTable extends DataClass implements Insertable<ShipsTable> {
+class Ship extends DataClass implements Insertable<Ship> {
   final String id;
   final String? shipName;
   final String? shipType;
   final String? shipModel;
-  final int? active;
+  final bool? active;
   final int? imo;
   final int? abs;
   final int? clazz;
   final int? weightLbs;
-  final int? yearBuilt;
+  final int? yearBuild;
   final String? homePort;
   final String? status;
   final String? courseDeg;
@@ -295,7 +278,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
   final int? attemptedLandings;
   final String? url;
   final String? image;
-  const ShipsTable(
+  const Ship(
       {required this.id,
       this.shipName,
       this.shipType,
@@ -305,7 +288,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
       this.abs,
       this.clazz,
       this.weightLbs,
-      this.yearBuilt,
+      this.yearBuild,
       this.homePort,
       this.status,
       this.courseDeg,
@@ -327,7 +310,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
       map['ship_model'] = Variable<String>(shipModel);
     }
     if (!nullToAbsent || active != null) {
-      map['active'] = Variable<int>(active);
+      map['active'] = Variable<bool>(active);
     }
     if (!nullToAbsent || imo != null) {
       map['imo'] = Variable<int>(imo);
@@ -341,8 +324,8 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
     if (!nullToAbsent || weightLbs != null) {
       map['weight_lbs'] = Variable<int>(weightLbs);
     }
-    if (!nullToAbsent || yearBuilt != null) {
-      map['year_built'] = Variable<int>(yearBuilt);
+    if (!nullToAbsent || yearBuild != null) {
+      map['year_build'] = Variable<int>(yearBuild);
     }
     if (!nullToAbsent || homePort != null) {
       map['home_port'] = Variable<String>(homePort);
@@ -389,9 +372,9 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
       weightLbs: weightLbs == null && nullToAbsent
           ? const Value.absent()
           : Value(weightLbs),
-      yearBuilt: yearBuilt == null && nullToAbsent
+      yearBuild: yearBuild == null && nullToAbsent
           ? const Value.absent()
-          : Value(yearBuilt),
+          : Value(yearBuild),
       homePort: homePort == null && nullToAbsent
           ? const Value.absent()
           : Value(homePort),
@@ -412,26 +395,25 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
     );
   }
 
-  factory ShipsTable.fromJson(Map<String, dynamic> json,
+  factory Ship.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return ShipsTable(
+    return Ship(
       id: serializer.fromJson<String>(json['id']),
-      shipName: serializer.fromJson<String?>(json['ship_name']),
-      shipType: serializer.fromJson<String?>(json['ship_type']),
-      shipModel: serializer.fromJson<String?>(json['ship_model']),
-      active: serializer.fromJson<int?>(json['active']),
+      shipName: serializer.fromJson<String?>(json['shipName']),
+      shipType: serializer.fromJson<String?>(json['shipType']),
+      shipModel: serializer.fromJson<String?>(json['shipModel']),
+      active: serializer.fromJson<bool?>(json['active']),
       imo: serializer.fromJson<int?>(json['imo']),
       abs: serializer.fromJson<int?>(json['abs']),
       clazz: serializer.fromJson<int?>(json['clazz']),
-      weightLbs: serializer.fromJson<int?>(json['weight_lbs']),
-      yearBuilt: serializer.fromJson<int?>(json['year_built']),
-      homePort: serializer.fromJson<String?>(json['home_port']),
+      weightLbs: serializer.fromJson<int?>(json['weightLbs']),
+      yearBuild: serializer.fromJson<int?>(json['yearBuild']),
+      homePort: serializer.fromJson<String?>(json['homePort']),
       status: serializer.fromJson<String?>(json['status']),
-      courseDeg: serializer.fromJson<String?>(json['course_deg']),
-      successfulLandings:
-          serializer.fromJson<int?>(json['successful_landings']),
-      attemptedLandings: serializer.fromJson<int?>(json['attempted_landings']),
+      courseDeg: serializer.fromJson<String?>(json['courseDeg']),
+      successfulLandings: serializer.fromJson<int?>(json['successfulLandings']),
+      attemptedLandings: serializer.fromJson<int?>(json['attemptedLandings']),
       url: serializer.fromJson<String?>(json['url']),
       image: serializer.fromJson<String?>(json['image']),
     );
@@ -441,36 +423,36 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<String>(id),
-      'ship_name': serializer.toJson<String?>(shipName),
-      'ship_type': serializer.toJson<String?>(shipType),
-      'ship_model': serializer.toJson<String?>(shipModel),
-      'active': serializer.toJson<int?>(active),
+      'shipName': serializer.toJson<String?>(shipName),
+      'shipType': serializer.toJson<String?>(shipType),
+      'shipModel': serializer.toJson<String?>(shipModel),
+      'active': serializer.toJson<bool?>(active),
       'imo': serializer.toJson<int?>(imo),
       'abs': serializer.toJson<int?>(abs),
       'clazz': serializer.toJson<int?>(clazz),
-      'weight_lbs': serializer.toJson<int?>(weightLbs),
-      'year_built': serializer.toJson<int?>(yearBuilt),
-      'home_port': serializer.toJson<String?>(homePort),
+      'weightLbs': serializer.toJson<int?>(weightLbs),
+      'yearBuild': serializer.toJson<int?>(yearBuild),
+      'homePort': serializer.toJson<String?>(homePort),
       'status': serializer.toJson<String?>(status),
-      'course_deg': serializer.toJson<String?>(courseDeg),
-      'successful_landings': serializer.toJson<int?>(successfulLandings),
-      'attempted_landings': serializer.toJson<int?>(attemptedLandings),
+      'courseDeg': serializer.toJson<String?>(courseDeg),
+      'successfulLandings': serializer.toJson<int?>(successfulLandings),
+      'attemptedLandings': serializer.toJson<int?>(attemptedLandings),
       'url': serializer.toJson<String?>(url),
       'image': serializer.toJson<String?>(image),
     };
   }
 
-  ShipsTable copyWith(
+  Ship copyWith(
           {String? id,
           Value<String?> shipName = const Value.absent(),
           Value<String?> shipType = const Value.absent(),
           Value<String?> shipModel = const Value.absent(),
-          Value<int?> active = const Value.absent(),
+          Value<bool?> active = const Value.absent(),
           Value<int?> imo = const Value.absent(),
           Value<int?> abs = const Value.absent(),
           Value<int?> clazz = const Value.absent(),
           Value<int?> weightLbs = const Value.absent(),
-          Value<int?> yearBuilt = const Value.absent(),
+          Value<int?> yearBuild = const Value.absent(),
           Value<String?> homePort = const Value.absent(),
           Value<String?> status = const Value.absent(),
           Value<String?> courseDeg = const Value.absent(),
@@ -478,7 +460,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
           Value<int?> attemptedLandings = const Value.absent(),
           Value<String?> url = const Value.absent(),
           Value<String?> image = const Value.absent()}) =>
-      ShipsTable(
+      Ship(
         id: id ?? this.id,
         shipName: shipName.present ? shipName.value : this.shipName,
         shipType: shipType.present ? shipType.value : this.shipType,
@@ -488,7 +470,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
         abs: abs.present ? abs.value : this.abs,
         clazz: clazz.present ? clazz.value : this.clazz,
         weightLbs: weightLbs.present ? weightLbs.value : this.weightLbs,
-        yearBuilt: yearBuilt.present ? yearBuilt.value : this.yearBuilt,
+        yearBuild: yearBuild.present ? yearBuild.value : this.yearBuild,
         homePort: homePort.present ? homePort.value : this.homePort,
         status: status.present ? status.value : this.status,
         courseDeg: courseDeg.present ? courseDeg.value : this.courseDeg,
@@ -503,7 +485,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
       );
   @override
   String toString() {
-    return (StringBuffer('ShipsTable(')
+    return (StringBuffer('Ship(')
           ..write('id: $id, ')
           ..write('shipName: $shipName, ')
           ..write('shipType: $shipType, ')
@@ -513,7 +495,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
           ..write('abs: $abs, ')
           ..write('clazz: $clazz, ')
           ..write('weightLbs: $weightLbs, ')
-          ..write('yearBuilt: $yearBuilt, ')
+          ..write('yearBuild: $yearBuild, ')
           ..write('homePort: $homePort, ')
           ..write('status: $status, ')
           ..write('courseDeg: $courseDeg, ')
@@ -536,7 +518,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
       abs,
       clazz,
       weightLbs,
-      yearBuilt,
+      yearBuild,
       homePort,
       status,
       courseDeg,
@@ -547,7 +529,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is ShipsTable &&
+      (other is Ship &&
           other.id == this.id &&
           other.shipName == this.shipName &&
           other.shipType == this.shipType &&
@@ -557,7 +539,7 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
           other.abs == this.abs &&
           other.clazz == this.clazz &&
           other.weightLbs == this.weightLbs &&
-          other.yearBuilt == this.yearBuilt &&
+          other.yearBuild == this.yearBuild &&
           other.homePort == this.homePort &&
           other.status == this.status &&
           other.courseDeg == this.courseDeg &&
@@ -567,17 +549,17 @@ class ShipsTable extends DataClass implements Insertable<ShipsTable> {
           other.image == this.image);
 }
 
-class ShipsCompanion extends UpdateCompanion<ShipsTable> {
+class ShipsCompanion extends UpdateCompanion<Ship> {
   final Value<String> id;
   final Value<String?> shipName;
   final Value<String?> shipType;
   final Value<String?> shipModel;
-  final Value<int?> active;
+  final Value<bool?> active;
   final Value<int?> imo;
   final Value<int?> abs;
   final Value<int?> clazz;
   final Value<int?> weightLbs;
-  final Value<int?> yearBuilt;
+  final Value<int?> yearBuild;
   final Value<String?> homePort;
   final Value<String?> status;
   final Value<String?> courseDeg;
@@ -596,7 +578,7 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
     this.abs = const Value.absent(),
     this.clazz = const Value.absent(),
     this.weightLbs = const Value.absent(),
-    this.yearBuilt = const Value.absent(),
+    this.yearBuild = const Value.absent(),
     this.homePort = const Value.absent(),
     this.status = const Value.absent(),
     this.courseDeg = const Value.absent(),
@@ -616,7 +598,7 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
     this.abs = const Value.absent(),
     this.clazz = const Value.absent(),
     this.weightLbs = const Value.absent(),
-    this.yearBuilt = const Value.absent(),
+    this.yearBuild = const Value.absent(),
     this.homePort = const Value.absent(),
     this.status = const Value.absent(),
     this.courseDeg = const Value.absent(),
@@ -626,17 +608,17 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
     this.image = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : id = Value(id);
-  static Insertable<ShipsTable> custom({
+  static Insertable<Ship> custom({
     Expression<String>? id,
     Expression<String>? shipName,
     Expression<String>? shipType,
     Expression<String>? shipModel,
-    Expression<int>? active,
+    Expression<bool>? active,
     Expression<int>? imo,
     Expression<int>? abs,
     Expression<int>? clazz,
     Expression<int>? weightLbs,
-    Expression<int>? yearBuilt,
+    Expression<int>? yearBuild,
     Expression<String>? homePort,
     Expression<String>? status,
     Expression<String>? courseDeg,
@@ -656,7 +638,7 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
       if (abs != null) 'abs': abs,
       if (clazz != null) 'clazz': clazz,
       if (weightLbs != null) 'weight_lbs': weightLbs,
-      if (yearBuilt != null) 'year_built': yearBuilt,
+      if (yearBuild != null) 'year_build': yearBuild,
       if (homePort != null) 'home_port': homePort,
       if (status != null) 'status': status,
       if (courseDeg != null) 'course_deg': courseDeg,
@@ -673,12 +655,12 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
       Value<String?>? shipName,
       Value<String?>? shipType,
       Value<String?>? shipModel,
-      Value<int?>? active,
+      Value<bool?>? active,
       Value<int?>? imo,
       Value<int?>? abs,
       Value<int?>? clazz,
       Value<int?>? weightLbs,
-      Value<int?>? yearBuilt,
+      Value<int?>? yearBuild,
       Value<String?>? homePort,
       Value<String?>? status,
       Value<String?>? courseDeg,
@@ -697,7 +679,7 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
       abs: abs ?? this.abs,
       clazz: clazz ?? this.clazz,
       weightLbs: weightLbs ?? this.weightLbs,
-      yearBuilt: yearBuilt ?? this.yearBuilt,
+      yearBuild: yearBuild ?? this.yearBuild,
       homePort: homePort ?? this.homePort,
       status: status ?? this.status,
       courseDeg: courseDeg ?? this.courseDeg,
@@ -725,7 +707,7 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
       map['ship_model'] = Variable<String>(shipModel.value);
     }
     if (active.present) {
-      map['active'] = Variable<int>(active.value);
+      map['active'] = Variable<bool>(active.value);
     }
     if (imo.present) {
       map['imo'] = Variable<int>(imo.value);
@@ -739,8 +721,8 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
     if (weightLbs.present) {
       map['weight_lbs'] = Variable<int>(weightLbs.value);
     }
-    if (yearBuilt.present) {
-      map['year_built'] = Variable<int>(yearBuilt.value);
+    if (yearBuild.present) {
+      map['year_build'] = Variable<int>(yearBuild.value);
     }
     if (homePort.present) {
       map['home_port'] = Variable<String>(homePort.value);
@@ -781,7 +763,7 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
           ..write('abs: $abs, ')
           ..write('clazz: $clazz, ')
           ..write('weightLbs: $weightLbs, ')
-          ..write('yearBuilt: $yearBuilt, ')
+          ..write('yearBuild: $yearBuild, ')
           ..write('homePort: $homePort, ')
           ..write('status: $status, ')
           ..write('courseDeg: $courseDeg, ')
@@ -795,38 +777,41 @@ class ShipsCompanion extends UpdateCompanion<ShipsTable> {
   }
 }
 
-class Position extends Table with TableInfo<Position, PositionTable> {
+class $PositionTable extends Position
+    with TableInfo<$PositionTable, PositionData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  Position(this.attachedDatabase, [this._alias]);
+  $PositionTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'id', aliasedName, false,
       hasAutoIncrement: true,
       type: DriftSqlType.int,
       requiredDuringInsert: false,
-      $customConstraints: 'NOT NULL PRIMARY KEY AUTOINCREMENT');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
   static const VerificationMeta _latitudeMeta =
       const VerificationMeta('latitude');
+  @override
   late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
       'latitude', aliasedName, true,
-      type: DriftSqlType.double,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _longitudeMeta =
       const VerificationMeta('longitude');
+  @override
   late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
       'longitude', aliasedName, true,
-      type: DriftSqlType.double,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _shipIdMeta = const VerificationMeta('shipId');
+  @override
   late final GeneratedColumn<String> shipId = GeneratedColumn<String>(
-      'shipId', aliasedName, true,
+      'ship_id', aliasedName, false,
       type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: 'REFERENCES ships(id)');
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES ships (id)'));
   @override
   List<GeneratedColumn> get $columns => [id, latitude, longitude, shipId];
   @override
@@ -835,7 +820,7 @@ class Position extends Table with TableInfo<Position, PositionTable> {
   String get actualTableName => $name;
   static const String $name = 'position';
   @override
-  VerificationContext validateIntegrity(Insertable<PositionTable> instance,
+  VerificationContext validateIntegrity(Insertable<PositionData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -850,9 +835,11 @@ class Position extends Table with TableInfo<Position, PositionTable> {
       context.handle(_longitudeMeta,
           longitude.isAcceptableOrUnknown(data['longitude']!, _longitudeMeta));
     }
-    if (data.containsKey('shipId')) {
+    if (data.containsKey('ship_id')) {
       context.handle(_shipIdMeta,
-          shipId.isAcceptableOrUnknown(data['shipId']!, _shipIdMeta));
+          shipId.isAcceptableOrUnknown(data['ship_id']!, _shipIdMeta));
+    } else if (isInserting) {
+      context.missing(_shipIdMeta);
     }
     return context;
   }
@@ -860,9 +847,9 @@ class Position extends Table with TableInfo<Position, PositionTable> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  PositionTable map(Map<String, dynamic> data, {String? tablePrefix}) {
+  PositionData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return PositionTable(
+    return PositionData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       latitude: attachedDatabase.typeMapping
@@ -870,26 +857,23 @@ class Position extends Table with TableInfo<Position, PositionTable> {
       longitude: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}longitude']),
       shipId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}shipId']),
+          .read(DriftSqlType.string, data['${effectivePrefix}ship_id'])!,
     );
   }
 
   @override
-  Position createAlias(String alias) {
-    return Position(attachedDatabase, alias);
+  $PositionTable createAlias(String alias) {
+    return $PositionTable(attachedDatabase, alias);
   }
-
-  @override
-  bool get dontWriteConstraints => true;
 }
 
-class PositionTable extends DataClass implements Insertable<PositionTable> {
+class PositionData extends DataClass implements Insertable<PositionData> {
   final int id;
   final double? latitude;
   final double? longitude;
-  final String? shipId;
-  const PositionTable(
-      {required this.id, this.latitude, this.longitude, this.shipId});
+  final String shipId;
+  const PositionData(
+      {required this.id, this.latitude, this.longitude, required this.shipId});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -900,9 +884,7 @@ class PositionTable extends DataClass implements Insertable<PositionTable> {
     if (!nullToAbsent || longitude != null) {
       map['longitude'] = Variable<double>(longitude);
     }
-    if (!nullToAbsent || shipId != null) {
-      map['shipId'] = Variable<String>(shipId);
-    }
+    map['ship_id'] = Variable<String>(shipId);
     return map;
   }
 
@@ -915,19 +897,18 @@ class PositionTable extends DataClass implements Insertable<PositionTable> {
       longitude: longitude == null && nullToAbsent
           ? const Value.absent()
           : Value(longitude),
-      shipId:
-          shipId == null && nullToAbsent ? const Value.absent() : Value(shipId),
+      shipId: Value(shipId),
     );
   }
 
-  factory PositionTable.fromJson(Map<String, dynamic> json,
+  factory PositionData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return PositionTable(
+    return PositionData(
       id: serializer.fromJson<int>(json['id']),
       latitude: serializer.fromJson<double?>(json['latitude']),
       longitude: serializer.fromJson<double?>(json['longitude']),
-      shipId: serializer.fromJson<String?>(json['shipId']),
+      shipId: serializer.fromJson<String>(json['shipId']),
     );
   }
   @override
@@ -937,24 +918,24 @@ class PositionTable extends DataClass implements Insertable<PositionTable> {
       'id': serializer.toJson<int>(id),
       'latitude': serializer.toJson<double?>(latitude),
       'longitude': serializer.toJson<double?>(longitude),
-      'shipId': serializer.toJson<String?>(shipId),
+      'shipId': serializer.toJson<String>(shipId),
     };
   }
 
-  PositionTable copyWith(
+  PositionData copyWith(
           {int? id,
           Value<double?> latitude = const Value.absent(),
           Value<double?> longitude = const Value.absent(),
-          Value<String?> shipId = const Value.absent()}) =>
-      PositionTable(
+          String? shipId}) =>
+      PositionData(
         id: id ?? this.id,
         latitude: latitude.present ? latitude.value : this.latitude,
         longitude: longitude.present ? longitude.value : this.longitude,
-        shipId: shipId.present ? shipId.value : this.shipId,
+        shipId: shipId ?? this.shipId,
       );
   @override
   String toString() {
-    return (StringBuffer('PositionTable(')
+    return (StringBuffer('PositionData(')
           ..write('id: $id, ')
           ..write('latitude: $latitude, ')
           ..write('longitude: $longitude, ')
@@ -968,18 +949,18 @@ class PositionTable extends DataClass implements Insertable<PositionTable> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is PositionTable &&
+      (other is PositionData &&
           other.id == this.id &&
           other.latitude == this.latitude &&
           other.longitude == this.longitude &&
           other.shipId == this.shipId);
 }
 
-class PositionCompanion extends UpdateCompanion<PositionTable> {
+class PositionCompanion extends UpdateCompanion<PositionData> {
   final Value<int> id;
   final Value<double?> latitude;
   final Value<double?> longitude;
-  final Value<String?> shipId;
+  final Value<String> shipId;
   const PositionCompanion({
     this.id = const Value.absent(),
     this.latitude = const Value.absent(),
@@ -990,9 +971,9 @@ class PositionCompanion extends UpdateCompanion<PositionTable> {
     this.id = const Value.absent(),
     this.latitude = const Value.absent(),
     this.longitude = const Value.absent(),
-    this.shipId = const Value.absent(),
-  });
-  static Insertable<PositionTable> custom({
+    required String shipId,
+  }) : shipId = Value(shipId);
+  static Insertable<PositionData> custom({
     Expression<int>? id,
     Expression<double>? latitude,
     Expression<double>? longitude,
@@ -1002,7 +983,7 @@ class PositionCompanion extends UpdateCompanion<PositionTable> {
       if (id != null) 'id': id,
       if (latitude != null) 'latitude': latitude,
       if (longitude != null) 'longitude': longitude,
-      if (shipId != null) 'shipId': shipId,
+      if (shipId != null) 'ship_id': shipId,
     });
   }
 
@@ -1010,7 +991,7 @@ class PositionCompanion extends UpdateCompanion<PositionTable> {
       {Value<int>? id,
       Value<double?>? latitude,
       Value<double?>? longitude,
-      Value<String?>? shipId}) {
+      Value<String>? shipId}) {
     return PositionCompanion(
       id: id ?? this.id,
       latitude: latitude ?? this.latitude,
@@ -1032,7 +1013,7 @@ class PositionCompanion extends UpdateCompanion<PositionTable> {
       map['longitude'] = Variable<double>(longitude.value);
     }
     if (shipId.present) {
-      map['shipId'] = Variable<String>(shipId.value);
+      map['ship_id'] = Variable<String>(shipId.value);
     }
     return map;
   }
@@ -1049,36 +1030,38 @@ class PositionCompanion extends UpdateCompanion<PositionTable> {
   }
 }
 
-class Missions extends Table with TableInfo<Missions, MissionsTable> {
+class $MissionsTable extends Missions with TableInfo<$MissionsTable, Mission> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  Missions(this.attachedDatabase, [this._alias]);
+  $MissionsTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
       'id', aliasedName, false,
       hasAutoIncrement: true,
       type: DriftSqlType.int,
       requiredDuringInsert: false,
-      $customConstraints: 'NOT NULL PRIMARY KEY AUTOINCREMENT');
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
       'name', aliasedName, true,
-      type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _flightMeta = const VerificationMeta('flight');
+  @override
   late final GeneratedColumn<int> flight = GeneratedColumn<int>(
       'flight', aliasedName, true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      $customConstraints: '');
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _shipIdMeta = const VerificationMeta('shipId');
+  @override
   late final GeneratedColumn<String> shipId = GeneratedColumn<String>(
-      'shipId', aliasedName, true,
+      'ship_id', aliasedName, false,
       type: DriftSqlType.string,
-      requiredDuringInsert: false,
-      $customConstraints: 'REFERENCES ships(id)');
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES ships (id)'));
   @override
   List<GeneratedColumn> get $columns => [id, name, flight, shipId];
   @override
@@ -1087,7 +1070,7 @@ class Missions extends Table with TableInfo<Missions, MissionsTable> {
   String get actualTableName => $name;
   static const String $name = 'missions';
   @override
-  VerificationContext validateIntegrity(Insertable<MissionsTable> instance,
+  VerificationContext validateIntegrity(Insertable<Mission> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -1102,9 +1085,11 @@ class Missions extends Table with TableInfo<Missions, MissionsTable> {
       context.handle(_flightMeta,
           flight.isAcceptableOrUnknown(data['flight']!, _flightMeta));
     }
-    if (data.containsKey('shipId')) {
+    if (data.containsKey('ship_id')) {
       context.handle(_shipIdMeta,
-          shipId.isAcceptableOrUnknown(data['shipId']!, _shipIdMeta));
+          shipId.isAcceptableOrUnknown(data['ship_id']!, _shipIdMeta));
+    } else if (isInserting) {
+      context.missing(_shipIdMeta);
     }
     return context;
   }
@@ -1112,9 +1097,9 @@ class Missions extends Table with TableInfo<Missions, MissionsTable> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  MissionsTable map(Map<String, dynamic> data, {String? tablePrefix}) {
+  Mission map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return MissionsTable(
+    return Mission(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       name: attachedDatabase.typeMapping
@@ -1122,25 +1107,23 @@ class Missions extends Table with TableInfo<Missions, MissionsTable> {
       flight: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}flight']),
       shipId: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}shipId']),
+          .read(DriftSqlType.string, data['${effectivePrefix}ship_id'])!,
     );
   }
 
   @override
-  Missions createAlias(String alias) {
-    return Missions(attachedDatabase, alias);
+  $MissionsTable createAlias(String alias) {
+    return $MissionsTable(attachedDatabase, alias);
   }
-
-  @override
-  bool get dontWriteConstraints => true;
 }
 
-class MissionsTable extends DataClass implements Insertable<MissionsTable> {
+class Mission extends DataClass implements Insertable<Mission> {
   final int id;
   final String? name;
   final int? flight;
-  final String? shipId;
-  const MissionsTable({required this.id, this.name, this.flight, this.shipId});
+  final String shipId;
+  const Mission(
+      {required this.id, this.name, this.flight, required this.shipId});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -1151,9 +1134,7 @@ class MissionsTable extends DataClass implements Insertable<MissionsTable> {
     if (!nullToAbsent || flight != null) {
       map['flight'] = Variable<int>(flight);
     }
-    if (!nullToAbsent || shipId != null) {
-      map['shipId'] = Variable<String>(shipId);
-    }
+    map['ship_id'] = Variable<String>(shipId);
     return map;
   }
 
@@ -1163,19 +1144,18 @@ class MissionsTable extends DataClass implements Insertable<MissionsTable> {
       name: name == null && nullToAbsent ? const Value.absent() : Value(name),
       flight:
           flight == null && nullToAbsent ? const Value.absent() : Value(flight),
-      shipId:
-          shipId == null && nullToAbsent ? const Value.absent() : Value(shipId),
+      shipId: Value(shipId),
     );
   }
 
-  factory MissionsTable.fromJson(Map<String, dynamic> json,
+  factory Mission.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return MissionsTable(
+    return Mission(
       id: serializer.fromJson<int>(json['id']),
       name: serializer.fromJson<String?>(json['name']),
       flight: serializer.fromJson<int?>(json['flight']),
-      shipId: serializer.fromJson<String?>(json['shipId']),
+      shipId: serializer.fromJson<String>(json['shipId']),
     );
   }
   @override
@@ -1185,24 +1165,24 @@ class MissionsTable extends DataClass implements Insertable<MissionsTable> {
       'id': serializer.toJson<int>(id),
       'name': serializer.toJson<String?>(name),
       'flight': serializer.toJson<int?>(flight),
-      'shipId': serializer.toJson<String?>(shipId),
+      'shipId': serializer.toJson<String>(shipId),
     };
   }
 
-  MissionsTable copyWith(
+  Mission copyWith(
           {int? id,
           Value<String?> name = const Value.absent(),
           Value<int?> flight = const Value.absent(),
-          Value<String?> shipId = const Value.absent()}) =>
-      MissionsTable(
+          String? shipId}) =>
+      Mission(
         id: id ?? this.id,
         name: name.present ? name.value : this.name,
         flight: flight.present ? flight.value : this.flight,
-        shipId: shipId.present ? shipId.value : this.shipId,
+        shipId: shipId ?? this.shipId,
       );
   @override
   String toString() {
-    return (StringBuffer('MissionsTable(')
+    return (StringBuffer('Mission(')
           ..write('id: $id, ')
           ..write('name: $name, ')
           ..write('flight: $flight, ')
@@ -1216,18 +1196,18 @@ class MissionsTable extends DataClass implements Insertable<MissionsTable> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is MissionsTable &&
+      (other is Mission &&
           other.id == this.id &&
           other.name == this.name &&
           other.flight == this.flight &&
           other.shipId == this.shipId);
 }
 
-class MissionsCompanion extends UpdateCompanion<MissionsTable> {
+class MissionsCompanion extends UpdateCompanion<Mission> {
   final Value<int> id;
   final Value<String?> name;
   final Value<int?> flight;
-  final Value<String?> shipId;
+  final Value<String> shipId;
   const MissionsCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -1238,9 +1218,9 @@ class MissionsCompanion extends UpdateCompanion<MissionsTable> {
     this.id = const Value.absent(),
     this.name = const Value.absent(),
     this.flight = const Value.absent(),
-    this.shipId = const Value.absent(),
-  });
-  static Insertable<MissionsTable> custom({
+    required String shipId,
+  }) : shipId = Value(shipId);
+  static Insertable<Mission> custom({
     Expression<int>? id,
     Expression<String>? name,
     Expression<int>? flight,
@@ -1250,7 +1230,7 @@ class MissionsCompanion extends UpdateCompanion<MissionsTable> {
       if (id != null) 'id': id,
       if (name != null) 'name': name,
       if (flight != null) 'flight': flight,
-      if (shipId != null) 'shipId': shipId,
+      if (shipId != null) 'ship_id': shipId,
     });
   }
 
@@ -1258,7 +1238,7 @@ class MissionsCompanion extends UpdateCompanion<MissionsTable> {
       {Value<int>? id,
       Value<String?>? name,
       Value<int?>? flight,
-      Value<String?>? shipId}) {
+      Value<String>? shipId}) {
     return MissionsCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -1280,7 +1260,7 @@ class MissionsCompanion extends UpdateCompanion<MissionsTable> {
       map['flight'] = Variable<int>(flight.value);
     }
     if (shipId.present) {
-      map['shipId'] = Variable<String>(shipId.value);
+      map['ship_id'] = Variable<String>(shipId.value);
     }
     return map;
   }
@@ -1299,9 +1279,9 @@ class MissionsCompanion extends UpdateCompanion<MissionsTable> {
 
 abstract class _$AppDb extends GeneratedDatabase {
   _$AppDb(QueryExecutor e) : super(e);
-  late final Ships ships = Ships(this);
-  late final Position position = Position(this);
-  late final Missions missions = Missions(this);
+  late final $ShipsTable ships = $ShipsTable(this);
+  late final $PositionTable position = $PositionTable(this);
+  late final $MissionsTable missions = $MissionsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
