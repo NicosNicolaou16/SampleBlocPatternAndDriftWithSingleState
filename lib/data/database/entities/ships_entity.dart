@@ -3,6 +3,7 @@ import 'package:sampleblocpatternanddriftwithsinglestate/data/database/database.
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/missions_entity.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/position_entity.dart';
 
+@UseRowClass(ShipsEntity)
 class Ships extends Table {
   TextColumn get id => text()();
 
@@ -165,24 +166,38 @@ class ShipsEntity {
 
   static Future<List<ShipsEntity>> getAllShips() async {
     AppDb appDb = AppDb.instance;
-    List<Ship>? shipsList = await appDb.select(appDb.ships).get();
-    //List<ShipsEntity>? shipsEntityList = await appDb.select(appDb.ships).get();
+    List<ShipsEntity>? shipsEntityList = await appDb.select(appDb.ships).get();
+    await Future.forEach(shipsEntityList, (shipsEntity) async {
+      shipsEntity.positionEntity =
+          await PositionEntity.getPositionById(shipsEntity.id ?? "-1");
+      shipsEntity.missionsEntityList =
+          await MissionsEntity.getAllMissionsByShipId(shipsEntity.id ?? "-1");
+    });
     return shipsEntityList;
   }
 
   static Future<ShipsEntity?> getShipById(String shipId) async {
     AppDb appDb = AppDb.instance;
     ShipsEntity? shipsEntity = await (appDb.select(appDb.ships)
-      ..where((tbl) => tbl.id.equals(shipId)))
+          ..where((tbl) => tbl.id.equals(shipId)))
         .getSingleOrNull();
+    shipsEntity?.positionEntity = await PositionEntity.getPositionById(shipId);
+    shipsEntity?.missionsEntityList =
+        await MissionsEntity.getAllMissionsByShipId(shipId);
     return shipsEntity;
   }
 
   static Future<List<ShipsEntity>> getShipsByName(String shipName) async {
     AppDb appDb = AppDb.instance;
     List<ShipsEntity>? shipsEntityList = await (appDb.select(appDb.ships)
-      ..where((tbl) => tbl.shipName.like("%$shipName%")))
+          ..where((tbl) => tbl.shipName.like("%$shipName%")))
         .get();
+    await Future.forEach(shipsEntityList, (shipsEntity) async {
+      shipsEntity.positionEntity =
+          await PositionEntity.getPositionById(shipsEntity.id ?? "-1");
+      shipsEntity.missionsEntityList =
+          await MissionsEntity.getAllMissionsByShipId(shipsEntity.id ?? "-1");
+    });
     return shipsEntityList;
   }
 }

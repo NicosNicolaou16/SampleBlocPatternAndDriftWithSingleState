@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/database.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/ships_entity.dart';
 
+@UseRowClass(MissionsEntity)
 class Missions extends Table {
   IntColumn get id => integer().autoIncrement()();
 
@@ -24,8 +25,8 @@ class MissionsEntity {
   });
 
   MissionsEntity.fromJson(Map<String, dynamic> json) {
-    name = json["ship"];
-    flight = json["ship_name"];
+    name = json["name"];
+    flight = json["flight"];
   }
 
   static List<MissionsEntity> fromJsonList(List json) {

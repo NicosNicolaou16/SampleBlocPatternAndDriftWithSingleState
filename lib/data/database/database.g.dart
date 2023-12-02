@@ -3,7 +3,7 @@
 part of 'database.dart';
 
 // ignore_for_file: type=lint
-class $ShipsTable extends Ships with TableInfo<$ShipsTable, Ship> {
+class $ShipsTable extends Ships with TableInfo<$ShipsTable, ShipsEntity> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -131,7 +131,7 @@ class $ShipsTable extends Ships with TableInfo<$ShipsTable, Ship> {
   String get actualTableName => $name;
   static const String $name = 'ships';
   @override
-  VerificationContext validateIntegrity(Insertable<Ship> instance,
+  VerificationContext validateIntegrity(Insertable<ShipsEntity> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -214,9 +214,9 @@ class $ShipsTable extends Ships with TableInfo<$ShipsTable, Ship> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  Ship map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ShipsEntity map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return Ship(
+    return ShipsEntity(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       shipName: attachedDatabase.typeMapping
@@ -260,296 +260,7 @@ class $ShipsTable extends Ships with TableInfo<$ShipsTable, Ship> {
   }
 }
 
-class Ship extends DataClass implements Insertable<Ship> {
-  final String id;
-  final String? shipName;
-  final String? shipType;
-  final String? shipModel;
-  final bool? active;
-  final int? imo;
-  final int? abs;
-  final int? clazz;
-  final int? weightLbs;
-  final int? yearBuild;
-  final String? homePort;
-  final String? status;
-  final String? courseDeg;
-  final int? successfulLandings;
-  final int? attemptedLandings;
-  final String? url;
-  final String? image;
-  const Ship(
-      {required this.id,
-      this.shipName,
-      this.shipType,
-      this.shipModel,
-      this.active,
-      this.imo,
-      this.abs,
-      this.clazz,
-      this.weightLbs,
-      this.yearBuild,
-      this.homePort,
-      this.status,
-      this.courseDeg,
-      this.successfulLandings,
-      this.attemptedLandings,
-      this.url,
-      this.image});
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    map['id'] = Variable<String>(id);
-    if (!nullToAbsent || shipName != null) {
-      map['ship_name'] = Variable<String>(shipName);
-    }
-    if (!nullToAbsent || shipType != null) {
-      map['ship_type'] = Variable<String>(shipType);
-    }
-    if (!nullToAbsent || shipModel != null) {
-      map['ship_model'] = Variable<String>(shipModel);
-    }
-    if (!nullToAbsent || active != null) {
-      map['active'] = Variable<bool>(active);
-    }
-    if (!nullToAbsent || imo != null) {
-      map['imo'] = Variable<int>(imo);
-    }
-    if (!nullToAbsent || abs != null) {
-      map['abs'] = Variable<int>(abs);
-    }
-    if (!nullToAbsent || clazz != null) {
-      map['clazz'] = Variable<int>(clazz);
-    }
-    if (!nullToAbsent || weightLbs != null) {
-      map['weight_lbs'] = Variable<int>(weightLbs);
-    }
-    if (!nullToAbsent || yearBuild != null) {
-      map['year_build'] = Variable<int>(yearBuild);
-    }
-    if (!nullToAbsent || homePort != null) {
-      map['home_port'] = Variable<String>(homePort);
-    }
-    if (!nullToAbsent || status != null) {
-      map['status'] = Variable<String>(status);
-    }
-    if (!nullToAbsent || courseDeg != null) {
-      map['course_deg'] = Variable<String>(courseDeg);
-    }
-    if (!nullToAbsent || successfulLandings != null) {
-      map['successful_landings'] = Variable<int>(successfulLandings);
-    }
-    if (!nullToAbsent || attemptedLandings != null) {
-      map['attempted_landings'] = Variable<int>(attemptedLandings);
-    }
-    if (!nullToAbsent || url != null) {
-      map['url'] = Variable<String>(url);
-    }
-    if (!nullToAbsent || image != null) {
-      map['image'] = Variable<String>(image);
-    }
-    return map;
-  }
-
-  ShipsCompanion toCompanion(bool nullToAbsent) {
-    return ShipsCompanion(
-      id: Value(id),
-      shipName: shipName == null && nullToAbsent
-          ? const Value.absent()
-          : Value(shipName),
-      shipType: shipType == null && nullToAbsent
-          ? const Value.absent()
-          : Value(shipType),
-      shipModel: shipModel == null && nullToAbsent
-          ? const Value.absent()
-          : Value(shipModel),
-      active:
-          active == null && nullToAbsent ? const Value.absent() : Value(active),
-      imo: imo == null && nullToAbsent ? const Value.absent() : Value(imo),
-      abs: abs == null && nullToAbsent ? const Value.absent() : Value(abs),
-      clazz:
-          clazz == null && nullToAbsent ? const Value.absent() : Value(clazz),
-      weightLbs: weightLbs == null && nullToAbsent
-          ? const Value.absent()
-          : Value(weightLbs),
-      yearBuild: yearBuild == null && nullToAbsent
-          ? const Value.absent()
-          : Value(yearBuild),
-      homePort: homePort == null && nullToAbsent
-          ? const Value.absent()
-          : Value(homePort),
-      status:
-          status == null && nullToAbsent ? const Value.absent() : Value(status),
-      courseDeg: courseDeg == null && nullToAbsent
-          ? const Value.absent()
-          : Value(courseDeg),
-      successfulLandings: successfulLandings == null && nullToAbsent
-          ? const Value.absent()
-          : Value(successfulLandings),
-      attemptedLandings: attemptedLandings == null && nullToAbsent
-          ? const Value.absent()
-          : Value(attemptedLandings),
-      url: url == null && nullToAbsent ? const Value.absent() : Value(url),
-      image:
-          image == null && nullToAbsent ? const Value.absent() : Value(image),
-    );
-  }
-
-  factory Ship.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return Ship(
-      id: serializer.fromJson<String>(json['id']),
-      shipName: serializer.fromJson<String?>(json['shipName']),
-      shipType: serializer.fromJson<String?>(json['shipType']),
-      shipModel: serializer.fromJson<String?>(json['shipModel']),
-      active: serializer.fromJson<bool?>(json['active']),
-      imo: serializer.fromJson<int?>(json['imo']),
-      abs: serializer.fromJson<int?>(json['abs']),
-      clazz: serializer.fromJson<int?>(json['clazz']),
-      weightLbs: serializer.fromJson<int?>(json['weightLbs']),
-      yearBuild: serializer.fromJson<int?>(json['yearBuild']),
-      homePort: serializer.fromJson<String?>(json['homePort']),
-      status: serializer.fromJson<String?>(json['status']),
-      courseDeg: serializer.fromJson<String?>(json['courseDeg']),
-      successfulLandings: serializer.fromJson<int?>(json['successfulLandings']),
-      attemptedLandings: serializer.fromJson<int?>(json['attemptedLandings']),
-      url: serializer.fromJson<String?>(json['url']),
-      image: serializer.fromJson<String?>(json['image']),
-    );
-  }
-  @override
-  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return <String, dynamic>{
-      'id': serializer.toJson<String>(id),
-      'shipName': serializer.toJson<String?>(shipName),
-      'shipType': serializer.toJson<String?>(shipType),
-      'shipModel': serializer.toJson<String?>(shipModel),
-      'active': serializer.toJson<bool?>(active),
-      'imo': serializer.toJson<int?>(imo),
-      'abs': serializer.toJson<int?>(abs),
-      'clazz': serializer.toJson<int?>(clazz),
-      'weightLbs': serializer.toJson<int?>(weightLbs),
-      'yearBuild': serializer.toJson<int?>(yearBuild),
-      'homePort': serializer.toJson<String?>(homePort),
-      'status': serializer.toJson<String?>(status),
-      'courseDeg': serializer.toJson<String?>(courseDeg),
-      'successfulLandings': serializer.toJson<int?>(successfulLandings),
-      'attemptedLandings': serializer.toJson<int?>(attemptedLandings),
-      'url': serializer.toJson<String?>(url),
-      'image': serializer.toJson<String?>(image),
-    };
-  }
-
-  Ship copyWith(
-          {String? id,
-          Value<String?> shipName = const Value.absent(),
-          Value<String?> shipType = const Value.absent(),
-          Value<String?> shipModel = const Value.absent(),
-          Value<bool?> active = const Value.absent(),
-          Value<int?> imo = const Value.absent(),
-          Value<int?> abs = const Value.absent(),
-          Value<int?> clazz = const Value.absent(),
-          Value<int?> weightLbs = const Value.absent(),
-          Value<int?> yearBuild = const Value.absent(),
-          Value<String?> homePort = const Value.absent(),
-          Value<String?> status = const Value.absent(),
-          Value<String?> courseDeg = const Value.absent(),
-          Value<int?> successfulLandings = const Value.absent(),
-          Value<int?> attemptedLandings = const Value.absent(),
-          Value<String?> url = const Value.absent(),
-          Value<String?> image = const Value.absent()}) =>
-      Ship(
-        id: id ?? this.id,
-        shipName: shipName.present ? shipName.value : this.shipName,
-        shipType: shipType.present ? shipType.value : this.shipType,
-        shipModel: shipModel.present ? shipModel.value : this.shipModel,
-        active: active.present ? active.value : this.active,
-        imo: imo.present ? imo.value : this.imo,
-        abs: abs.present ? abs.value : this.abs,
-        clazz: clazz.present ? clazz.value : this.clazz,
-        weightLbs: weightLbs.present ? weightLbs.value : this.weightLbs,
-        yearBuild: yearBuild.present ? yearBuild.value : this.yearBuild,
-        homePort: homePort.present ? homePort.value : this.homePort,
-        status: status.present ? status.value : this.status,
-        courseDeg: courseDeg.present ? courseDeg.value : this.courseDeg,
-        successfulLandings: successfulLandings.present
-            ? successfulLandings.value
-            : this.successfulLandings,
-        attemptedLandings: attemptedLandings.present
-            ? attemptedLandings.value
-            : this.attemptedLandings,
-        url: url.present ? url.value : this.url,
-        image: image.present ? image.value : this.image,
-      );
-  @override
-  String toString() {
-    return (StringBuffer('Ship(')
-          ..write('id: $id, ')
-          ..write('shipName: $shipName, ')
-          ..write('shipType: $shipType, ')
-          ..write('shipModel: $shipModel, ')
-          ..write('active: $active, ')
-          ..write('imo: $imo, ')
-          ..write('abs: $abs, ')
-          ..write('clazz: $clazz, ')
-          ..write('weightLbs: $weightLbs, ')
-          ..write('yearBuild: $yearBuild, ')
-          ..write('homePort: $homePort, ')
-          ..write('status: $status, ')
-          ..write('courseDeg: $courseDeg, ')
-          ..write('successfulLandings: $successfulLandings, ')
-          ..write('attemptedLandings: $attemptedLandings, ')
-          ..write('url: $url, ')
-          ..write('image: $image')
-          ..write(')'))
-        .toString();
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      id,
-      shipName,
-      shipType,
-      shipModel,
-      active,
-      imo,
-      abs,
-      clazz,
-      weightLbs,
-      yearBuild,
-      homePort,
-      status,
-      courseDeg,
-      successfulLandings,
-      attemptedLandings,
-      url,
-      image);
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is Ship &&
-          other.id == this.id &&
-          other.shipName == this.shipName &&
-          other.shipType == this.shipType &&
-          other.shipModel == this.shipModel &&
-          other.active == this.active &&
-          other.imo == this.imo &&
-          other.abs == this.abs &&
-          other.clazz == this.clazz &&
-          other.weightLbs == this.weightLbs &&
-          other.yearBuild == this.yearBuild &&
-          other.homePort == this.homePort &&
-          other.status == this.status &&
-          other.courseDeg == this.courseDeg &&
-          other.successfulLandings == this.successfulLandings &&
-          other.attemptedLandings == this.attemptedLandings &&
-          other.url == this.url &&
-          other.image == this.image);
-}
-
-class ShipsCompanion extends UpdateCompanion<Ship> {
+class ShipsCompanion extends UpdateCompanion<ShipsEntity> {
   final Value<String> id;
   final Value<String?> shipName;
   final Value<String?> shipType;
@@ -608,7 +319,7 @@ class ShipsCompanion extends UpdateCompanion<Ship> {
     this.image = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : id = Value(id);
-  static Insertable<Ship> custom({
+  static Insertable<ShipsEntity> custom({
     Expression<String>? id,
     Expression<String>? shipName,
     Expression<String>? shipType,
@@ -778,7 +489,7 @@ class ShipsCompanion extends UpdateCompanion<Ship> {
 }
 
 class $PositionTable extends Position
-    with TableInfo<$PositionTable, PositionData> {
+    with TableInfo<$PositionTable, PositionEntity> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -820,7 +531,7 @@ class $PositionTable extends Position
   String get actualTableName => $name;
   static const String $name = 'position';
   @override
-  VerificationContext validateIntegrity(Insertable<PositionData> instance,
+  VerificationContext validateIntegrity(Insertable<PositionEntity> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -847,11 +558,9 @@ class $PositionTable extends Position
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  PositionData map(Map<String, dynamic> data, {String? tablePrefix}) {
+  PositionEntity map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return PositionData(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+    return PositionEntity(
       latitude: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}latitude']),
       longitude: attachedDatabase.typeMapping
@@ -867,96 +576,7 @@ class $PositionTable extends Position
   }
 }
 
-class PositionData extends DataClass implements Insertable<PositionData> {
-  final int id;
-  final double? latitude;
-  final double? longitude;
-  final String shipId;
-  const PositionData(
-      {required this.id, this.latitude, this.longitude, required this.shipId});
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    map['id'] = Variable<int>(id);
-    if (!nullToAbsent || latitude != null) {
-      map['latitude'] = Variable<double>(latitude);
-    }
-    if (!nullToAbsent || longitude != null) {
-      map['longitude'] = Variable<double>(longitude);
-    }
-    map['ship_id'] = Variable<String>(shipId);
-    return map;
-  }
-
-  PositionCompanion toCompanion(bool nullToAbsent) {
-    return PositionCompanion(
-      id: Value(id),
-      latitude: latitude == null && nullToAbsent
-          ? const Value.absent()
-          : Value(latitude),
-      longitude: longitude == null && nullToAbsent
-          ? const Value.absent()
-          : Value(longitude),
-      shipId: Value(shipId),
-    );
-  }
-
-  factory PositionData.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return PositionData(
-      id: serializer.fromJson<int>(json['id']),
-      latitude: serializer.fromJson<double?>(json['latitude']),
-      longitude: serializer.fromJson<double?>(json['longitude']),
-      shipId: serializer.fromJson<String>(json['shipId']),
-    );
-  }
-  @override
-  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
-      'latitude': serializer.toJson<double?>(latitude),
-      'longitude': serializer.toJson<double?>(longitude),
-      'shipId': serializer.toJson<String>(shipId),
-    };
-  }
-
-  PositionData copyWith(
-          {int? id,
-          Value<double?> latitude = const Value.absent(),
-          Value<double?> longitude = const Value.absent(),
-          String? shipId}) =>
-      PositionData(
-        id: id ?? this.id,
-        latitude: latitude.present ? latitude.value : this.latitude,
-        longitude: longitude.present ? longitude.value : this.longitude,
-        shipId: shipId ?? this.shipId,
-      );
-  @override
-  String toString() {
-    return (StringBuffer('PositionData(')
-          ..write('id: $id, ')
-          ..write('latitude: $latitude, ')
-          ..write('longitude: $longitude, ')
-          ..write('shipId: $shipId')
-          ..write(')'))
-        .toString();
-  }
-
-  @override
-  int get hashCode => Object.hash(id, latitude, longitude, shipId);
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is PositionData &&
-          other.id == this.id &&
-          other.latitude == this.latitude &&
-          other.longitude == this.longitude &&
-          other.shipId == this.shipId);
-}
-
-class PositionCompanion extends UpdateCompanion<PositionData> {
+class PositionCompanion extends UpdateCompanion<PositionEntity> {
   final Value<int> id;
   final Value<double?> latitude;
   final Value<double?> longitude;
@@ -973,7 +593,7 @@ class PositionCompanion extends UpdateCompanion<PositionData> {
     this.longitude = const Value.absent(),
     required String shipId,
   }) : shipId = Value(shipId);
-  static Insertable<PositionData> custom({
+  static Insertable<PositionEntity> custom({
     Expression<int>? id,
     Expression<double>? latitude,
     Expression<double>? longitude,
@@ -1030,7 +650,8 @@ class PositionCompanion extends UpdateCompanion<PositionData> {
   }
 }
 
-class $MissionsTable extends Missions with TableInfo<$MissionsTable, Mission> {
+class $MissionsTable extends Missions
+    with TableInfo<$MissionsTable, MissionsEntity> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
@@ -1070,7 +691,7 @@ class $MissionsTable extends Missions with TableInfo<$MissionsTable, Mission> {
   String get actualTableName => $name;
   static const String $name = 'missions';
   @override
-  VerificationContext validateIntegrity(Insertable<Mission> instance,
+  VerificationContext validateIntegrity(Insertable<MissionsEntity> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -1097,11 +718,9 @@ class $MissionsTable extends Missions with TableInfo<$MissionsTable, Mission> {
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  Mission map(Map<String, dynamic> data, {String? tablePrefix}) {
+  MissionsEntity map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return Mission(
-      id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+    return MissionsEntity(
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name']),
       flight: attachedDatabase.typeMapping
@@ -1117,93 +736,7 @@ class $MissionsTable extends Missions with TableInfo<$MissionsTable, Mission> {
   }
 }
 
-class Mission extends DataClass implements Insertable<Mission> {
-  final int id;
-  final String? name;
-  final int? flight;
-  final String shipId;
-  const Mission(
-      {required this.id, this.name, this.flight, required this.shipId});
-  @override
-  Map<String, Expression> toColumns(bool nullToAbsent) {
-    final map = <String, Expression>{};
-    map['id'] = Variable<int>(id);
-    if (!nullToAbsent || name != null) {
-      map['name'] = Variable<String>(name);
-    }
-    if (!nullToAbsent || flight != null) {
-      map['flight'] = Variable<int>(flight);
-    }
-    map['ship_id'] = Variable<String>(shipId);
-    return map;
-  }
-
-  MissionsCompanion toCompanion(bool nullToAbsent) {
-    return MissionsCompanion(
-      id: Value(id),
-      name: name == null && nullToAbsent ? const Value.absent() : Value(name),
-      flight:
-          flight == null && nullToAbsent ? const Value.absent() : Value(flight),
-      shipId: Value(shipId),
-    );
-  }
-
-  factory Mission.fromJson(Map<String, dynamic> json,
-      {ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return Mission(
-      id: serializer.fromJson<int>(json['id']),
-      name: serializer.fromJson<String?>(json['name']),
-      flight: serializer.fromJson<int?>(json['flight']),
-      shipId: serializer.fromJson<String>(json['shipId']),
-    );
-  }
-  @override
-  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
-    serializer ??= driftRuntimeOptions.defaultSerializer;
-    return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
-      'name': serializer.toJson<String?>(name),
-      'flight': serializer.toJson<int?>(flight),
-      'shipId': serializer.toJson<String>(shipId),
-    };
-  }
-
-  Mission copyWith(
-          {int? id,
-          Value<String?> name = const Value.absent(),
-          Value<int?> flight = const Value.absent(),
-          String? shipId}) =>
-      Mission(
-        id: id ?? this.id,
-        name: name.present ? name.value : this.name,
-        flight: flight.present ? flight.value : this.flight,
-        shipId: shipId ?? this.shipId,
-      );
-  @override
-  String toString() {
-    return (StringBuffer('Mission(')
-          ..write('id: $id, ')
-          ..write('name: $name, ')
-          ..write('flight: $flight, ')
-          ..write('shipId: $shipId')
-          ..write(')'))
-        .toString();
-  }
-
-  @override
-  int get hashCode => Object.hash(id, name, flight, shipId);
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      (other is Mission &&
-          other.id == this.id &&
-          other.name == this.name &&
-          other.flight == this.flight &&
-          other.shipId == this.shipId);
-}
-
-class MissionsCompanion extends UpdateCompanion<Mission> {
+class MissionsCompanion extends UpdateCompanion<MissionsEntity> {
   final Value<int> id;
   final Value<String?> name;
   final Value<int?> flight;
@@ -1220,7 +753,7 @@ class MissionsCompanion extends UpdateCompanion<Mission> {
     this.flight = const Value.absent(),
     required String shipId,
   }) : shipId = Value(shipId);
-  static Insertable<Mission> custom({
+  static Insertable<MissionsEntity> custom({
     Expression<int>? id,
     Expression<String>? name,
     Expression<int>? flight,

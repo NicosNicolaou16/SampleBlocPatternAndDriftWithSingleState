@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/database.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/ships_entity.dart';
 
+@UseRowClass(PositionEntity)
 class Position extends Table {
   IntColumn get id => integer().autoIncrement()();
 
