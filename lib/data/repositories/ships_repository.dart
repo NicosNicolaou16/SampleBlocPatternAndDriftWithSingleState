@@ -1,13 +1,16 @@
+
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/ships_entity.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/domain/remote/ships_service.dart';
 
 class ShipsRepository {
   final ShipsService _shipsService = ShipsService();
 
-  Future<List<ShipsEntity>> requestAndSaveDataLocal() async {
-    List<ShipsEntity>? shipsEntityList = await _shipsService.getShips();
-    await saveShipOnLocalDatabase(shipsEntityList);
-    return shipsEntityList;
+  Future<ShipsServiceResponse> requestAndSaveDataLocal() async {
+    ShipsServiceResponse? shipsServiceResponse = await _shipsService.getShips();
+    if (shipsServiceResponse.shipsEntityList != null) {
+      await saveShipOnLocalDatabase(shipsServiceResponse.shipsEntityList);
+    }
+    return shipsServiceResponse;
   }
 
   Future<void> saveShipOnLocalDatabase(
