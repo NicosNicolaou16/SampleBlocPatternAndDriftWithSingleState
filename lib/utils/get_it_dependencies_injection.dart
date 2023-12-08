@@ -9,7 +9,7 @@ import 'package:sampleblocpatternanddriftwithsinglestate/views/ships_screen/ship
 final getIt = GetIt.instance;
 
 class GetItDependenciesInjection {
-  void setup() {
+  void getItSetup() {
     getIt.registerFactory<Dio>(() => Dio());
     getIt.registerFactory<AppDb>(() => AppDb());
     getIt.registerLazySingleton<ShipsBloc>(() => ShipsBloc());
