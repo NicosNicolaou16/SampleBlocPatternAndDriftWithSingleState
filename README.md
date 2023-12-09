@@ -5,6 +5,7 @@ This is a sample project that uses Bloc Architecture Pattern Single State with D
 Bloc Architecture Pattern with Repository and Service <br />
 Dio (Network Manager) <br />
 Drift Database (SQL) <br />
+GetIt Library (Dependencies Injection) <br />
 
 Flutter SDK version: 3.16.3 <br />
 Dart Version: 3.2.2 <br />
@@ -22,6 +23,7 @@ https://drift.simonbinder.eu/docs/getting-started/advanced_dart_tables/ <br />
 https://stackoverflow.com/questions/73811123/how-to-stop-dio-get-when-the-internet-is-off <br />
 https://stackoverflow.com/questions/61381265/stop-showing-error-from-http-or-dio-request <br />
 https://pub.dev/packages/dio#handling-errors <br />
+https://pub.dev/packages/get_it <br />
 
 # Feeds/Urls/End Point (parsing some data from response)
 ## (Links References for Ends Points)
