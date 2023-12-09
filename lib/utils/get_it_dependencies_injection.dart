@@ -10,8 +10,8 @@ final getIt = GetIt.instance;
 
 class GetItDependenciesInjection {
   void getItSetup() {
-    getIt.registerFactory<Dio>(() => Dio());
-    getIt.registerFactory<AppDb>(() => AppDb());
+    getIt.registerLazySingleton<Dio>(() => Dio());
+    getIt.registerLazySingleton<AppDb>(() => AppDb());
     getIt.registerLazySingleton<ShipsBloc>(() => ShipsBloc());
     getIt.registerLazySingleton<ShipDetailsBloc>(() => ShipDetailsBloc());
     getIt.registerLazySingleton<ShipsService>(() => ShipsService());

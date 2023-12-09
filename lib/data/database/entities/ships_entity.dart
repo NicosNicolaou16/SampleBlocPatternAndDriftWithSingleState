@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/database.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/missions_entity.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/position_entity.dart';
+import 'package:sampleblocpatternanddriftwithsinglestate/utils/get_it_dependencies_injection.dart';
 
 @UseRowClass(ShipsEntity)
 class Ships extends Table {
@@ -143,7 +144,7 @@ class ShipsEntity {
 
   static Future<List<ShipsEntity>> saveShips(
       List<ShipsEntity> shipsEntityList) async {
-    AppDb appDb = AppDb.instance;
+    AppDb appDb = getIt.get<AppDb>();
     await PositionEntity.deleteAllPosition(appDb);
     await MissionsEntity.deleteAllMissions(appDb);
     await Future.forEach(shipsEntityList, (ShipsEntity shipEntity) async {
@@ -165,7 +166,7 @@ class ShipsEntity {
   }
 
   static Future<List<ShipsEntity>> getAllShips() async {
-    AppDb appDb = AppDb.instance;
+    AppDb appDb = getIt.get<AppDb>();
     List<ShipsEntity>? shipsEntityList = await appDb.select(appDb.ships).get();
     await Future.forEach(shipsEntityList, (shipsEntity) async {
       shipsEntity.positionEntity =
@@ -177,7 +178,7 @@ class ShipsEntity {
   }
 
   static Future<ShipsEntity?> getShipById(String shipId) async {
-    AppDb appDb = AppDb.instance;
+    AppDb appDb = getIt.get<AppDb>();
     ShipsEntity? shipsEntity = await (appDb.select(appDb.ships)
           ..where((tbl) => tbl.id.equals(shipId)))
         .getSingleOrNull();
@@ -188,7 +189,7 @@ class ShipsEntity {
   }
 
   static Future<List<ShipsEntity>> getShipsByName(String shipName) async {
-    AppDb appDb = AppDb.instance;
+    AppDb appDb = getIt.get<AppDb>();
     List<ShipsEntity>? shipsEntityList = await (appDb.select(appDb.ships)
           ..where((tbl) => tbl.shipName.like("%$shipName%")))
         .get();

@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/database.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/ships_entity.dart';
+import 'package:sampleblocpatternanddriftwithsinglestate/utils/get_it_dependencies_injection.dart';
 
 @UseRowClass(MissionsEntity)
 class Missions extends Table {
@@ -55,7 +56,7 @@ class MissionsEntity {
 
   static Future<List<MissionsEntity>> saveMissions(
       List<MissionsEntity> missionsEntityList, String shipId) async {
-    AppDb appDb = AppDb.instance;
+    AppDb appDb = getIt.get<AppDb>();
     await Future.forEach(missionsEntityList,
         (MissionsEntity missionsEntity) async {
       await appDb
@@ -67,7 +68,7 @@ class MissionsEntity {
 
   static Future<List<MissionsEntity>> getAllMissionsByShipId(
       String shipId) async {
-    AppDb appDb = AppDb.instance;
+    AppDb appDb = getIt.get<AppDb>();
     List<MissionsEntity>? missionsEntityList = await (appDb.select(appDb.missions)
       ..where((tbl) => tbl.shipId.equals(shipId)))
         .get();

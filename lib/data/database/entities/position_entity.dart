@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/database.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/ships_entity.dart';
+import 'package:sampleblocpatternanddriftwithsinglestate/utils/get_it_dependencies_injection.dart';
 
 @UseRowClass(PositionEntity)
 class Position extends Table {
@@ -43,7 +44,7 @@ class PositionEntity {
 
   static Future<PositionEntity> savePosition(
       PositionEntity positionEntity, String shipId) async {
-    AppDb appDb = AppDb.instance;
+    AppDb appDb = getIt.get<AppDb>();
     await appDb
         .into(appDb.position)
         .insertOnConflictUpdate(positionEntity.toCompanion(shipId));
@@ -51,7 +52,7 @@ class PositionEntity {
   }
 
   static Future<PositionEntity?> getPositionById(String shipId) async {
-    AppDb appDb = AppDb.instance;
+    AppDb appDb = getIt.get<AppDb>();
     PositionEntity? positionEntity = await (appDb.select(appDb.position)
       ..where((tbl) => tbl.shipId.equals(shipId)))
         .getSingleOrNull();

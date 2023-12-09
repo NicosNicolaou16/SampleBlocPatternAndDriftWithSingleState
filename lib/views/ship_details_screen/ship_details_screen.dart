@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/models/ship_details/ship_details_data_model.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/utils/alerts_dialog/alerts_dialog.dart';
+import 'package:sampleblocpatternanddriftwithsinglestate/utils/get_it_dependencies_injection.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/views/ship_details_screen/ship_details_bloc/ship_details_bloc.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/views/ship_details_screen/ship_details_bloc/ship_details_events.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/views/ship_details_screen/ship_details_bloc/ship_details_states.dart';
@@ -17,8 +18,16 @@ class ShipDetailsScreen extends StatefulWidget {
 }
 
 class _ShipDetailsScreenState extends State<ShipDetailsScreen> {
-  _init(BuildContext context) {
-    context.read<ShipDetailsBloc>().add(ShipDetailsLocalQuery(widget.shipId));
+  final ShipDetailsBloc shipDetailsBloc = getIt.get<ShipDetailsBloc>();
+
+  @override
+  void initState() {
+    _init();
+    super.initState();
+  }
+
+  _init() {
+    shipDetailsBloc.add(ShipDetailsLocalQuery(widget.shipId));
   }
 
   @override
@@ -36,7 +45,7 @@ class _ShipDetailsScreenState extends State<ShipDetailsScreen> {
           ),
         ),
         body: BlocProvider(
-          create: (_) => ShipDetailsBloc(),
+          create: (_) => shipDetailsBloc,
           child: BlocConsumer<ShipDetailsBloc, ShipDetailsStates>(
             listener: (context, state) {
               if (state.shipDetailsStatus == ShipDetailsStatus.error) {
@@ -53,9 +62,7 @@ class _ShipDetailsScreenState extends State<ShipDetailsScreen> {
   }
 
   Widget _states(ShipDetailsStates state, BuildContext context) {
-    if (state.shipDetailsStatus == ShipDetailsStatus.initial) {
-      _init(context);
-    } else if (state.shipDetailsStatus == ShipDetailsStatus.loaded) {
+    if (state.shipDetailsStatus == ShipDetailsStatus.loaded) {
       return _mainView(state, context);
     } else if (state.shipDetailsStatus == ShipDetailsStatus.loading) {
       return const Center(

@@ -3,11 +3,12 @@ import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/
 import 'package:sampleblocpatternanddriftwithsinglestate/data/models/ships/ships_data_model.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/repositories/ships_repository.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/utils/error_handling.dart';
+import 'package:sampleblocpatternanddriftwithsinglestate/utils/get_it_dependencies_injection.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/views/ships_screen/ships_bloc/ships_events.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/views/ships_screen/ships_bloc/ships_states.dart';
 
 class ShipsBloc extends Bloc<ShipsEvents, ShipsStates> {
-  final ShipsRepository _shipsRepository = ShipsRepository();
+  final ShipsRepository _shipsRepository = getIt.get<ShipsRepository>();
 
   ShipsBloc() : super(ShipsStates()) {
     on<ShipsFetchData>(_onShipsFetched);

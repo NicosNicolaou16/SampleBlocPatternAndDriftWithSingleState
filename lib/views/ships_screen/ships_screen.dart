@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/models/ships/ships_data_model.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/utils/alerts_dialog/alerts_dialog.dart';
+import 'package:sampleblocpatternanddriftwithsinglestate/utils/get_it_dependencies_injection.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/views/ships_screen/ships_bloc/ships_bloc.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/views/ships_screen/ships_bloc/ships_events.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/views/ships_screen/ships_bloc/ships_states.dart';
@@ -17,9 +18,17 @@ class ShipsScreen extends StatefulWidget {
 }
 
 class _ShipsScreenState extends State<ShipsScreen> {
+  final ShipsBloc _shipsBloc = getIt.get<ShipsBloc>();
+
+  @override
+  void initState() {
+    _init(context);
+    super.initState();
+  }
+
   _init(BuildContext context) {
-    context.read<ShipsBloc>().add(ShipsFetchData());
-    context.read<ShipsBloc>().add(ShipsFromLocalDatabase());
+    _shipsBloc.add(ShipsFetchData());
+    _shipsBloc.add(ShipsFromLocalDatabase());
   }
 
   @override
@@ -37,7 +46,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
           ),
         ),
         body: BlocProvider(
-          create: (_) => ShipsBloc(),
+          create: (_) => _shipsBloc,
           child: BlocConsumer<ShipsBloc, ShipsStates>(
             listener: (context, state) {
               if (state.shipStatus == ShipStatus.error) {
@@ -54,9 +63,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
   }
 
   Widget _states(ShipsStates state, BuildContext context) {
-    if (state.shipStatus == ShipStatus.initial) {
-      _init(context);
-    } else if (state.shipStatus == ShipStatus.loaded) {
+    if (state.shipStatus == ShipStatus.loaded) {
       return _mainView(state, context);
     } else if (state.shipStatus == ShipStatus.loading) {
       return const Center(
@@ -81,7 +88,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
               labelText: 'Searching...',
             ),
             onChanged: (value) {
-              context.read<ShipsBloc>().add(ShipsLocalSearch(value));
+              _shipsBloc.add(ShipsLocalSearch(value));
             },
           ),
         ),
