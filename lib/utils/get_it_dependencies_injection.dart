@@ -12,9 +12,9 @@ class GetItDependenciesInjection {
   void getItSetup() {
     getIt.registerLazySingleton<Dio>(() => Dio());
     getIt.registerLazySingleton<AppDb>(() => AppDb());
-    getIt.registerLazySingleton<ShipsBloc>(() => ShipsBloc());
-    getIt.registerLazySingleton<ShipDetailsBloc>(() => ShipDetailsBloc());
-    getIt.registerLazySingleton<ShipsService>(() => ShipsService());
-    getIt.registerLazySingleton<ShipsRepository>(() => ShipsRepository());
+    getIt.registerFactory<ShipsBloc>(() => ShipsBloc());
+    getIt.registerFactory<ShipDetailsBloc>(() => ShipDetailsBloc());
+    getIt.registerFactory<ShipsService>(() => ShipsService());
+    getIt.registerFactory<ShipsRepository>(() => ShipsRepository());
   }
 }

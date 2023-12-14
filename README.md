@@ -7,7 +7,7 @@ Dio (Network Manager) <br />
 Drift Database (SQL) <br />
 GetIt Library (Dependencies Injection) <br />
 
-Flutter SDK version: 3.16.3 <br />
+Flutter SDK version: 3.16.4 <br />
 Dart Version: 3.2.2 <br />
 
 # Similar with this Project
