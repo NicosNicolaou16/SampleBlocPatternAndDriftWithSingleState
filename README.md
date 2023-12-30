@@ -8,7 +8,7 @@ Drift Database (SQL) <br />
 GetIt Library (Dependencies Injection) <br />
 
 Flutter SDK version: 3.16.5 <br />
-Dart Version: 3.2.2 <br />
+Dart Version: 3.2.3 <br />
 
 # Similar with this Project
 https://github.com/NicosNicolaou16/SampleBlocPatternWithSingleState <br />
