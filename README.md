@@ -1,5 +1,5 @@
 # Sample Bloc Pattern And Drift With Single State
-This is a sample project that uses Bloc Architecture Pattern Single State with Dio Network Manager and Drift Database without Drift File but with the Class.
+This is a sample project that uses Bloc Architecture Pattern Single State with Dio Network Manager and Drift Database without Drift File but with the Class
 
 # This Project contains:
 Bloc Architecture Pattern with Repository and Service <br />
