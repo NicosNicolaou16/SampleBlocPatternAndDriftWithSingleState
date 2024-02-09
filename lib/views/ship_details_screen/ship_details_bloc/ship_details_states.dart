@@ -1,4 +1,3 @@
-
 import 'package:sampleblocpatternanddriftwithsinglestate/data/models/ship_details/ship_details_data_model.dart';
 
 enum ShipDetailsStatus {
@@ -22,17 +21,17 @@ class ShipDetailsStates {
   });
 
   ShipDetailsStates copyWith({
-    error,
-    statusCode,
-    shipDetailsDataModelList,
-    shipDetailsStatus,
+    String? error,
+    int? statusCode,
+    List<ShipDetailsDataModel>? shipDetailsDataModelList,
+    required ShipDetailsStatus shipDetailsStatus,
   }) {
     return ShipDetailsStates(
       error: error ?? this.error,
       statusCode: statusCode ?? this.statusCode,
       shipDetailsDataModelList:
           shipDetailsDataModelList ?? this.shipDetailsDataModelList,
-      shipDetailsStatus: shipDetailsStatus ?? this.shipDetailsStatus,
+      shipDetailsStatus: shipDetailsStatus,
     );
   }
 }
