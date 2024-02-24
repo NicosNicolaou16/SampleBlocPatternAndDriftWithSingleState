@@ -13,7 +13,6 @@ part 'database.g.dart';
 @DriftDatabase(tables: [Ships, Position, Missions])
 class AppDb extends _$AppDb {
   AppDb() : super(_openConnection());
-  static final instance = AppDb();
 
   @override
   int get schemaVersion => 1;
