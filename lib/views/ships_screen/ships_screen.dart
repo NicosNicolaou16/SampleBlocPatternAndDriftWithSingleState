@@ -38,6 +38,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
         appBar: AppBar(
           centerTitle: true,
           elevation: 0,
+          forceMaterialTransparency: true,
           title: const Text(
             "Ships List",
             style: TextStyle(
