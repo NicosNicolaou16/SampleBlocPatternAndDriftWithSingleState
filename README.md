@@ -7,8 +7,8 @@ Dio (Network Manager) <br />
 Drift Database (SQL) <br />
 GetIt Library (Dependencies Injection) <br />
 
-Flutter SDK version: 3.24.3 <br />
-Dart Version: 3.5.3 <br />
+Flutter SDK version: 3.24.5 <br />
+Dart Version: 3.5.4 <br />
 
 # Similar with this Project
 https://github.com/NicosNicolaou16/SampleBlocPatternWithSingleState <br />
