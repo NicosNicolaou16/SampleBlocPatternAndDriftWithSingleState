@@ -10,6 +10,7 @@ and services, separates business logic, data access, and UI by using streams to 
 manage data flow. ([Bloc Pattern Documentation](https://bloclibrary.dev/getting-started/)) <br />
 [Dio Network Manager](https://pub.dev/packages/dio) is responsible for making requests and
 retrieving data from the remote server. <br />
+[Cached Network Image](https://pub.dev/packages/cached_network_image) is a package that it is responsible for loading the images and supports offline functionality.  <br />
 Drift Database (SQL) <br />
 GetIt Library (Dependencies Injection) <br />
 
