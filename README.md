@@ -1,9 +1,13 @@
 # Sample Bloc Pattern And Drift With Single State
-This project is an application that uses Bloc Architecture Pattern Single State with Dio Network Manager and Drift Database without Drift File but with the Class.
+
+This project is an application that uses Bloc Architecture Pattern Single State with Dio Network
+Manager and Drift Database without Drift File but with the Class.
 
 # This Project contains:
+
 Bloc Architecture Pattern with Repository and Service <br />
-Dio (Network Manager) <br />
+[Dio Network Manager](https://pub.dev/packages/dio) is responsible for making requests and
+retrieving data from the remote server. <br />
 Drift Database (SQL) <br />
 GetIt Library (Dependencies Injection) <br />
 
@@ -11,9 +15,11 @@ Flutter SDK version: 3.24.5 <br />
 Dart Version: 3.5.4 <br />
 
 # Similar with this Project
+
 https://github.com/NicosNicolaou16/SampleBlocPatternWithSingleState <br />
 
 # References/Tutorials Follow
+
 https://bloclibrary.dev/#/flutterinfinitelisttutorial <br />
 https://bloclibrary.dev/#/gettingstarted <br />
 https://bloclibrary.dev/#/fluttertimertutorial?id=flutter-timer-tutorial <br />
@@ -26,6 +32,8 @@ https://pub.dev/packages/dio#handling-errors <br />
 https://pub.dev/packages/get_it <br />
 
 # Feeds/Urls/End Point (parsing some data from response)
+
 ## (Links References for Ends Points)
+
 https://github.com/r-spacex/SpaceX-API (GitHub) <br />
 https://docs.spacexdata.com/?version=latest (Postman) <br />
