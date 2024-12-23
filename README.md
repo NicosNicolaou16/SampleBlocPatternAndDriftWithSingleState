@@ -12,7 +12,9 @@ manage data flow. ([Bloc Pattern Documentation](https://bloclibrary.dev/getting-
 retrieving data from the remote server. <br />
 [Cached Network Image](https://pub.dev/packages/cached_network_image) is a package that it is
 responsible for loading the images and supports offline functionality.  <br />
-Drift Database (SQL) <br />
+[Drift Database](https://drift.simonbinder.eu/docs/getting-started/) is responsible for saving the
+retrieved data from the remote server, querying data from the local database, and supporting offline
+functionality. ([Drift Database Documentation](https://pub.dev/packages/drift)) <br />
 [Get It (Dependencies Injection)](https://pub.dev/packages/get_it) is a lightweight dependency
 injection package for Flutter that allows you to register and access services globally, promoting
 cleaner and more maintainable code.  <br />
