@@ -28,10 +28,6 @@ cleaner and more maintainable code.  <br />
 Flutter SDK version: 3.27.1 <br />
 Dart Version: 3.6.0 <br />
 
-# Similar with this Project
-
-https://github.com/NicosNicolaou16/SampleBlocPatternWithSingleState <br />
-
 # References/Tutorials Follow
 
 https://bloclibrary.dev/#/flutterinfinitelisttutorial <br />
