@@ -19,6 +19,8 @@ functionality. ([Drift Database Documentation](https://pub.dev/packages/drift)) 
 injection package for Flutter that allows you to register and access services globally, promoting
 cleaner and more maintainable code.  <br />
 
+# Versioning
+
 Flutter SDK version: 3.24.5 <br />
 Dart Version: 3.5.4 <br />
 
