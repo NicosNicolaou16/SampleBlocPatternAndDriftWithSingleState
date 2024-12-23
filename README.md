@@ -4,6 +4,9 @@ This project is an application that uses the BLoC architecture pattern with a si
 the network manager, and Drift as the database solution. The database is implemented using Drift
 classes, without the need for a Drift file.
 
+> [!IMPORTANT]  
+> Similar project with (Drift Class) :point_right: [SampleBlocPatternWithSingleState](https://github.com/NicosNicolaou16/SampleBlocPatternWithSingleState) :point_left: <br />
+
 # The Project Contain the following technologies and libraries
 
 [Bloc Patterns using single state](https://pub.dev/packages/flutter_bloc) along with repositories
