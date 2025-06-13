@@ -25,8 +25,8 @@ cleaner and more maintainable code.  <br />
 
 # Versioning
 
-Flutter SDK version: 3.27.1 <br />
-Dart Version: 3.6.0 <br />
+Flutter SDK version: 3.32.2 <br />
+Dart Version: 3.8.1 <br />
 
 # References/Tutorials Follow
 
