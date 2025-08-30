@@ -11,7 +11,7 @@ import 'package:sampleblocpatternanddriftwithsinglestate/views/ship_details_scre
 class ShipDetailsScreen extends StatefulWidget {
   final String shipId;
 
-  const ShipDetailsScreen({Key? key, required this.shipId}) : super(key: key);
+  const ShipDetailsScreen({super.key, required this.shipId});
 
   @override
   State<ShipDetailsScreen> createState() => _ShipDetailsScreenState();
@@ -26,7 +26,7 @@ class _ShipDetailsScreenState extends State<ShipDetailsScreen> {
     super.initState();
   }
 
-  _init() {
+  void _init() {
     shipDetailsBloc.add(ShipDetailsLocalQuery(widget.shipId));
   }
 
@@ -88,7 +88,7 @@ class _ShipDetailsScreenState extends State<ShipDetailsScreen> {
           ShipDetailsDataModel shipDetailsDataModel =
               state.shipDetailsDataModelList[index];
           if (shipDetailsDataModel.shipDetailsViewType ==
-              ShipDetailsViewType.PHOTO_VIEW_TYPE) {
+              ShipDetailsViewType.photoViewType) {
             return _imageView(shipDetailsDataModel);
           } else {
             return _infoView(shipDetailsDataModel);

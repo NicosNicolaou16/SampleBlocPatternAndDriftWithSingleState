@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/data/database/entities/ships_entity.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/utils/apis/apis.dart';
 import 'package:sampleblocpatternanddriftwithsinglestate/utils/get_it_dependencies_injection.dart';

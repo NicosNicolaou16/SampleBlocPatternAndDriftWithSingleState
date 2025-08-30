@@ -11,7 +11,7 @@ import 'package:sampleblocpatternanddriftwithsinglestate/views/ships_screen/ship
 import '../ship_details_screen/ship_details_screen.dart';
 
 class ShipsScreen extends StatefulWidget {
-  const ShipsScreen({Key? key}) : super(key: key);
+  const ShipsScreen({super.key});
 
   @override
   State<ShipsScreen> createState() => _ShipsScreenState();
@@ -26,7 +26,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
     super.initState();
   }
 
-  _init(BuildContext context) {
+  void _init(BuildContext context) {
     _shipsBloc.add(ShipsFetchData());
     _shipsBloc.add(ShipsFromLocalDatabase());
   }
