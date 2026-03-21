@@ -37,7 +37,7 @@ cleaner and more maintainable code.  <br />
 # Versioning
 
 Flutter SDK version: 3.41.5 <br />
-Dart Version: 3.10.4 <br />
+Dart Version: 3.11.3 <br />
 
 # References/Tutorials Follow
 
