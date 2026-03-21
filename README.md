@@ -58,7 +58,3 @@ If you find this project useful for your Flutter development, please give it a s
 ## 🙏 Support & Contributions
 
 Feedback, bug reports, and feature requests are welcome! Feel free to **open an issue** or submit a **pull request**.
-
-
-
-
